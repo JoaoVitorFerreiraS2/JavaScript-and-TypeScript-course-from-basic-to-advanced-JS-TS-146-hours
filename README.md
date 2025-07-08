@@ -3,5 +3,3 @@
 
 ## Primeira aula
 ### Aprendendo a utilizar console.log
-
-#a
