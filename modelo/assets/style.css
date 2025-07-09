@@ -1,0 +1,61 @@
+:root{
+    --primary-color: antiquewhite
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    background-color: rgb(104, 104, 104);
+    width: 640px;
+    height: 80vh;
+    margin: auto 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 40px;
+    padding: 10vw;
+}
+.container div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vh
+}
+
+.container div label{
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 5px 5px 10px black;
+}
+
+.container div input{
+    border-radius: 5px;
+    height: 5vh;
+}
+
+.container button{
+    margin-top: 2vh;
+    width: 15vw;
+    height: 5vh;
+    font-weight: bold;
+    cursor: pointer;
+
+}
