@@ -60,8 +60,9 @@ function criarCalculadora() {
 
         mostrarDisplay(valor) {
             this.display.value += valor;
-
         }
+
+        
     }
 };
 
