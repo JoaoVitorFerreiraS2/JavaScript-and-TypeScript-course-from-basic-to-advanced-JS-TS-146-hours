@@ -1,0 +1,1 @@
+webpack -w > serve para ficar monitorando sempre, ou seja, qualquer alteração feita no momento já é alterado na hora
