@@ -1,0 +1,2 @@
+import validaCPF from './validarCPF';
+
