@@ -1,4 +1,4 @@
-class ValidaCpf{
+export default class ValidarCPF{
     constructor(cpfEnviado){
         Object.defineProperty(this, 'cpfLimpo',{
             enumerable: true, 
@@ -12,6 +12,7 @@ class ValidaCpf{
         if(typeof this.cpfLimpo === 'undefined') return false;
         if(this.cpfLimpo.length !== 11) return false;
         if(this.isSequencia()) return false;
+        if(typeof this.cpfLimpo !== 'string') return false;
 
         const cpfParcial = this.cpfLimpo.slice(0, -2);
         const digito1 = this.criaDigito(cpfParcial);
@@ -24,7 +25,7 @@ class ValidaCpf{
         return novoCpf === this.cpfLimpo;
     }
 
-    criaDigito(cpfParcial){
+    static criaDigito(cpfParcial){
         const cpfArray = Array.from(cpfParcial);
 
         let regressivo = cpfArray.length + 1;
@@ -43,6 +44,3 @@ class ValidaCpf{
         return this.cpfLimpo[0].repeat(this.cpfLimpo.length) === cpf.cpfLimpo;
     }
 }
-
-const cpf = new ValidaCpf('131..373.579-50');
-console.log(cpf.valida());

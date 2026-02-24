@@ -2,6 +2,120 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/modules/ValidarCPF.js"
+/*!***********************************!*\
+  !*** ./src/modules/ValidarCPF.js ***!
+  \***********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ValidarCPF)
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var ValidarCPF = /*#__PURE__*/function () {
+  function ValidarCPF(cpfEnviado) {
+    _classCallCheck(this, ValidarCPF);
+    Object.defineProperty(this, 'cpfLimpo', {
+      enumerable: true,
+      get: function get() {
+        return cpfEnviado.replace(/\D+/g, '');
+      }
+    });
+  }
+  return _createClass(ValidarCPF, [{
+    key: "valida",
+    value: function valida() {
+      if (typeof this.cpfLimpo === 'undefined') return false;
+      if (this.cpfLimpo.length !== 11) return false;
+      if (this.isSequencia()) return false;
+      if (typeof this.cpfLimpo !== 'string') return false;
+      var cpfParcial = this.cpfLimpo.slice(0, -2);
+      var digito1 = this.criaDigito(cpfParcial);
+      var digito2 = this.criaDigito(cpfParcial + digito1);
+      console.log(digito1);
+      console.log(digito2);
+      var novoCpf = cpfParcial + digito1 + digito2;
+      return novoCpf === this.cpfLimpo;
+    }
+  }, {
+    key: "isSequencia",
+    value: function isSequencia() {
+      return this.cpfLimpo[0].repeat(this.cpfLimpo.length) === cpf.cpfLimpo;
+    }
+  }], [{
+    key: "criaDigito",
+    value: function criaDigito(cpfParcial) {
+      var cpfArray = Array.from(cpfParcial);
+      var regressivo = cpfArray.length + 1;
+      var total = cpfArray.reduce(function (ac, val) {
+        ac += regressivo * Number(val);
+        regressivo--;
+        return ac;
+      }, 0);
+      var digito = 11 - total % 11;
+      return digito > 9 ? '0' : String(digito);
+    }
+  }]);
+}();
+
+
+/***/ },
+
+/***/ "./src/modules/geraCPF.js"
+/*!********************************!*\
+  !*** ./src/modules/geraCPF.js ***!
+  \********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GeraCPF)
+/* harmony export */ });
+/* harmony import */ var _ValidarCPF__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ValidarCPF */ "./src/modules/ValidarCPF.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+var GeraCPF = /*#__PURE__*/function () {
+  function GeraCPF() {
+    _classCallCheck(this, GeraCPF);
+  }
+  return _createClass(GeraCPF, [{
+    key: "rand",
+    value: function rand() {
+      var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100000000;
+      var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 999999999;
+      return String(Math.floor(Math.random() * (max - min) + min));
+    }
+  }, {
+    key: "formatado",
+    value: function formatado(cpf) {
+      return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6, 9) + '-' + cpf.slice(9, 11);
+    }
+  }, {
+    key: "geraNovoCpf",
+    value: function geraNovoCpf() {
+      var cpfSemDigito = this.rand();
+      var digito1 = _ValidarCPF__WEBPACK_IMPORTED_MODULE_0__["default"].criaDigito(cpfSemDigito);
+      var digito2 = _ValidarCPF__WEBPACK_IMPORTED_MODULE_0__["default"].criaDigito(cpfSemDigito + digito1);
+      var novoCpf = cpfSemDigito + digito1 + digito2;
+      return this.formatado(novoCpf);
+    }
+  }]);
+}();
+
+
+/***/ },
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css"
 /*!************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css ***!
@@ -610,8 +724,15 @@ var __webpack_exports__ = {};
   !*** ./src/main.js ***!
   \*********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
+/* harmony import */ var _modules_geraCPF__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/geraCPF */ "./src/modules/geraCPF.js");
+/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
 
+
+(function () {
+  var gera = new _modules_geraCPF__WEBPACK_IMPORTED_MODULE_0__["default"]();
+  var cpfGerado = document.querySelector('.cpf-gerado');
+  cpfGerado.innerHTML = gera.geraNovoCpf();
+})();
 })();
 
 /******/ })()
