@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modelo</title>
+</head>
+
+<body>
+
+  <section class="container">
+    <h1>Gerador de Senha</h1>
+    <div style="display: flex; flex-direction: column;">
+      <h2 class="senha-view"></h2>
+      <div>
+        <label for="tamanho-senha">Quantidade de caracteres:</label>
+        <input type="number" id="tamanho-senha" min="1" max="20" value="8">
+      </div>
+      <div>
+        <label for="adicionar-numeros">Adicionar Números</label>
+        <input type="checkbox" id="adicionar-numeros" checked>
+      </div>
+      <div>
+        <label for="adicionar-maiusculas">Adicionar Letras Maiúsculas</label>
+        <input type="checkbox" id="adicionar-maiusculas" checked>
+      </div>
+      <div>
+        <label for="adicionar-minusculas">Adicionar Letras Minúsculas</label>
+        <input type="checkbox" id="adicionar-minusculas" checked>
+      </div>
+      <div>
+        <label for="adicionar-simbolos">Adicionar Símbolos</label>
+        <input type="checkbox" id="adicionar-simbolos" checked> 
+      </div>
+      <div>
+        <label for="sem-repetir">Sem repetir caracteres</label>
+        <input type="checkbox" id="sem-repetir">
+      </div>
+      <button class="gerar-senha">Gerar Senha</button>
+    </div>
+  </section>
+
+  <script src="./js/bundle.js"></script>
+</body>
+
+</html>
